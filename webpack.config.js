@@ -1,5 +1,6 @@
 const path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function (env) {
     const isProd = env === 'production';
@@ -16,15 +17,8 @@ module.exports = function (env) {
             rules: [
                 {
                     test: /\.(css)$/,
-                    use: [
-                        {loader: 'style-loader'},
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: isProd
-                            }
-                        }
-                    ]
+                    use: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader"})
+
                 },
                 {
                     test: /\.jsx?$/,
@@ -44,9 +38,15 @@ module.exports = function (env) {
                 }
             ]
         },
+        plugins: [
+            new webpack.optimize.UglifyJsPlugin(),
+            new ExtractTextPlugin("bundle.css"),
+            new webpack.HotModuleReplacementPlugin()
+        ],
         devServer: {
             open: true,
-            progress: true
+            progress: true,
+            hot: true
         },
         resolve: {
             modules: ['node_modules'],
