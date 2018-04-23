@@ -1,0 +1,31 @@
+{
+  "name": "react-webpack",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.28.11",
+    "jest": "^22.4.3",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-scripts": "1.1.4",
+    "redux": "^3.7.2",
+    "style-loader": "^0.21.0",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.11.1"
+  },
+  "scripts": {
+    "dev-server": "webpack-dev-server",
+    "build-prod": "webpack --env production",
+    "build-dev": "webpack",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.0.15 -D"
+  }
+}
